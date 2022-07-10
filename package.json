@@ -1,0 +1,25 @@
+{
+  "name": "com.zhang.zut",
+  "version": "1.0.0",
+  "description": "个人工具",
+  "displayName": "ZUT",
+  "unity": "2018.1",
+  "author": {
+    "name": "Zhang",
+    "email": "",
+    "url": ""
+  },
+  "changelogUrl": "",
+  "dependencies": {
+	"com.unity.nuget.newtonsoft-json": "2.0.0"
+  },
+  "documentationUrl": "",
+  "hideInEditor": false,
+  "keywords": [
+    "zhang"
+  ],
+  "license": "",
+  "licensesUrl": "",
+  "samples": [],
+  "unityRelease": "16f1"
+}

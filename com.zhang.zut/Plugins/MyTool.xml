@@ -1,0 +1,869 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyTool</name>
+    </assembly>
+    <members>
+        <member name="T:MyTool.Tools.MyTools">
+            <summary>
+            杂项工具类
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.Timer(System.Int32,System.Action,System.Boolean)">
+            <summary>
+            Task计时器
+            </summary>
+            <param name="ms">计时时间(毫秒)</param>
+            <param name="over">结束回调</param>
+            <param name="loop">是否循环执行</param>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.Timer(System.Single,MyTool.Tools.ShortcutsCellbackFloat,System.Action,System.Boolean)">
+            <summary>
+            DoTween倒计时计时器
+            </summary>
+            <param name="TimeCount">倒计时所需的时间</param>
+            <param name="shortcuts">计时进行时的回调</param>
+            <param name="overCallback">完成倒计时的回调</param>
+            <param name="loop">是否循环执行</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.Timer(System.Single,System.Action,System.Boolean)">
+            <summary>
+            DoTween倒计时计时器
+            </summary>
+            <param name="TimeCount">倒计时所需的时间</param>
+            <param name="action">完成倒计时的回调</param>
+            <param name="loop">是否循环执行</param>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.RandomGet``1(System.Collections.Generic.List{``0})">
+            <summary>
+            随机获取List中的一个数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.ToTimeString(System.DateTime,System.String)">
+            <summary>
+            转换为年月日
+            </summary>
+            <param name="time"></param>
+            <param name="format">格式默认yyyy-MM-dd HH:mm:ss.fff zzz</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.ToIdString(System.String,System.Char[])">
+            <summary>
+            转换为合法的ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.MyTools.ToIllegal(System.String,System.Char[])">
+            <summary>
+            检测非法字符true代表合法
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.Vibration.Vibrate">
+            <summary>
+            震动
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.Vibration.Vibrate(System.Int64)">
+            <summary>
+            震动
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.Vibration.Vibrate(System.Int64[],System.Int32)">
+            <summary>
+            震动
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.Vibration.HasVibrator">
+            <summary>
+            是否可以震动
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Vibration.Cancel">
+            <summary>
+            取消震动
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.CSVTool.SaveCSV(System.Data.DataTable,System.String)">
+            <summary>
+            将DataTable中数据写入到CSV文件中
+            </summary>
+            <param name="dt">提供保存数据的DataTable</param>
+            <param name="fullPath">CSV的文件路径</param>
+        </member>
+        <member name="M:MyTool.Tools.CSVTool.OpenCSV(System.String)">
+            <summary>
+            将CSV文件的数据读取到DataTable中
+            </summary>
+            <param name="filePath">CSV文件路径</param>
+            <returns>返回读取了CSV数据的DataTable</returns>
+        </member>
+        <member name="M:MyTool.Tools.CSVTool.GetType(System.String)">
+            给定文件的路径，读取文件的二进制数据，判断文件的编码类型
+            <param name="FILE_NAME">文件路径</param>
+            <returns>文件的编码类型</returns>
+        </member>
+        <member name="M:MyTool.Tools.CSVTool.GetType(System.IO.FileStream)">
+            通过给定的文件流，判断文件的编码类型
+            <param name="fs">文件流</param>
+            <returns>文件的编码类型</returns>
+        </member>
+        <member name="M:MyTool.Tools.CSVTool.IsUTF8Bytes(System.Byte[])">
+            判断是否是不带 BOM 的 UTF8 格式
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.CSVTool.NewCSV(System.Type)">
+            <summary>
+            根据类里的字段创建CSV文件
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="T:MyTool.Tools.Data">
+            <summary>
+            数据操作工具
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlListSave``1(System.Collections.Generic.List{``0},System.String,System.String)">
+            <summary>
+            当前List保存为Xml
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlSingleSave``1(``0,System.String,System.String)">
+            <summary>
+            当前数据保存为Xml
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlArraySave``1(``0[],System.String,System.String)">
+            <summary>
+            当前数组保存为Xml
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlListUpdate``1(System.Collections.Generic.List{``0},System.String,System.String)">
+            <summary>
+            给当前List更新数据
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlSingleUpdate``1(``0,System.String,System.String)">
+            <summary>
+            添加单个
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlRead``1(System.String,System.String)">
+            <summary>
+              /// <summary>
+            读取XML文件
+            </summary>
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlRead``1(System.String,System.String,System.Collections.Generic.List{``0}@)">
+            <summary>
+            读取XML文件
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+            <param name="ff"></param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlListRemove``1(System.Collections.Generic.List{``0},System.String,System.String)">
+            <summary>
+            删除XML中某段数据
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.XmlSingleRemove``1(``0,System.String,System.String)">
+            <summary>
+            删除XML中某段数据  单个
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.M_Serialization_Remove``1(``0[],System.String,System.String)">
+            <summary>
+            删除XML中某段数据 数组
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="ff"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.UpdateData``1(``0,``0,System.String,System.String)">
+            <summary>
+            更新数据
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="Quondam_data">之前的数据</param>
+            <param name="Now_data">要更换的数据</param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.FindData``1(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            在XML文件中根据名字查找值
+            </summary>
+            <typeparam name="T">泛型</typeparam>
+            <param name="name"></param>
+            <param name="value"></param>
+            <param name="changeName"></param>
+            <param name="path">路径</param>
+            <param name="filename">文件名（包含后缀）</param>
+        </member>
+        <member name="M:MyTool.Tools.Data.LoadAllFiles(System.String,System.String)">
+            <summary>
+            获取某个路径下的某个后缀类型的文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="suffix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Data.FindFileSearch(System.String,System.String)">
+            <summary>
+            查找指定后缀名的文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="pattern">要查找的后缀名如*.txt</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Data.FindFileSearch(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            查找指定后缀名的文件
+            </summary>
+            <param name="d">new DirectoryInfo(path)</param>
+            <param name="pattern">要查找的后缀名如*.txt</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Data.Judge_Equality(System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[],System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[])">
+            <summary>
+            判断里面的属性和字段的值是否都一致
+            </summary>
+            <param name="field"></param>
+            <param name="property"></param>
+            <param name="field2"></param>
+            <param name="property2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTool.Tools.Data.GetAssetPath">
+            <summary>
+            Unity路径
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.Data.GetAssetPath.GetAbsolutePath(System.String)">
+            <summary>
+            获取绝对路径
+            </summary>
+            <param name="pathName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Data.GetAssetPath.GetRelativePath(System.String)">
+            <summary>
+            获取相对路径
+            </summary>
+            <param name="pathName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.Data.GetAssetPath.GetAssetName(System.String)">
+            <summary>
+            获取文件名
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTool.Tools.MathTool">
+            <summary>
+            数学运算工具
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.MathTool.GetAngle(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            获取A和B的旋转夹角
+            </summary>
+            <param name="a">当前的位置</param>
+            <param name="target">目标位置</param>
+            <returns>角度</returns>
+        </member>
+        <member name="M:MyTool.Tools.MathTool.RegionDetection(UnityEngine.Vector2,System.Collections.Generic.List{UnityEngine.Vector2})">
+            <summary>
+            区域检测
+            </summary>
+            <param name="Target">目标</param>
+            <param name="vertexs">顶点List集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTool.Tools.ObjectPool`1">
+            <summary>
+            对象池
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.ObjectPool`1.#ctor(`0,System.Int32,UnityEngine.Transform,System.Boolean)">
+            <summary>
+            创建池
+            </summary>
+            <param name="prefab">对应类型的预制体</param>
+            <param name="p">父级</param>
+            <param name="PoolSize">初始化生成的数量</param>
+            <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
+        </member>
+        <member name="M:MyTool.Tools.ObjectPool`1.#ctor(UnityEngine.GameObject,System.Int32,UnityEngine.Transform,System.Boolean)">
+            <summary>
+            创建池,并且给对象添加对应的脚本
+            </summary>
+            <param name="prefab">对应类型的预制体</param>
+            <param name="p">父级</param>
+            <param name="PoolSize">初始化生成的数量</param>
+            <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
+        </member>
+        <member name="M:MyTool.Tools.ObjectPool`1.CloseAll">
+            <summary>
+            把全部对象设置为false
+            </summary>
+        </member>
+        <member name="T:MyTool.Tools.ObjectPool`2">
+            <summary>
+            对象池
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.ObjectPool`2.#ctor(`0,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
+            <summary>
+            创建池
+            </summary>
+            <param name="prefab">对应类型的预制体</param>
+            <param name="p">父级</param>
+            <param name="PoolSize">初始化生成的数量</param>
+            <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
+        </member>
+        <member name="M:MyTool.Tools.ObjectPool`2.#ctor(UnityEngine.GameObject,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
+            <summary>
+            创建池,并且给对象添加对应的脚本
+            </summary>
+            <param name="prefab">对应类型的预制体</param>
+            <param name="p">父级</param>
+            <param name="PoolSize">初始化生成的数量</param>
+            <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
+        </member>
+        <member name="M:MyTool.Tools.ObjectPool`2.CloseAll">
+            <summary>
+            把全部对象设置为false
+            </summary>
+        </member>
+        <member name="T:MyTool.Tools.IPoolValue">
+            <summary> 对象池对象传参接口 </summary>
+        </member>
+        <member name="M:MyTool.Tools.IPoolValue.Init``1(``0)">
+            <summary>
+            给对象传参
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
+        </member>
+        <member name="T:MyTool.Tools.ShortcutsCellback">
+            <summary>
+            快捷操作指令
+            </summary>
+        </member>
+        <member name="T:MyTool.Tools.ShortcutsCellbackFloat">
+            <summary>
+            快捷指令float
+            </summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.Database`1.HasKey(System.String)">
+            <summary>检查是否包含Key</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.SpriteDatas.Get(System.String)">
+            <summary>
+            获取对象
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.UnityComponents.PrefabDatas.Get(System.String)">
+            <summary>
+            获取对象
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.ResetScale">
+            <summary>
+            重置比例
+            </summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.SetInteractable(System.Boolean)">
+            <summary>
+            设置是否禁用
+            </summary>
+            <param name="interactable"></param>
+        </member>
+        <member name="M:MyTool.UnityComponents.IUIClickable.SetOnClick(System.Action)">
+            <summary>
+            设置点击事件
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:MyTool.UnityComponents.IUIClickable.SetOnDown(System.Action)">
+            <summary>
+            设置按下事件
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="M:MyTool.UnityComponents.IUIClickable.SetOnUp(System.Action)">
+            <summary>
+            设置抬起事件
+            </summary>
+            <param name="callback"></param>
+        </member>
+        <member name="T:MyTool.UnityComponents.UI_Drag">
+            <summary>
+            拖拽UI元素
+            </summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Drag.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            开始拖拽的时候
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Drag.OnDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            拖拽中
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Drag.OnEndDrag(UnityEngine.EventSystems.PointerEventData)">
+            <summary>
+            拖拽完毕
+            </summary>
+            <param name="eventData"></param>
+        </member>
+        <member name="M:DOTweenTools.DOFade(UnityEngine.CanvasGroup,System.Single,System.Single)">
+            <summary>Tweens a CanvasGroup's alpha color to the given value.
+            Also stores the canvasGroup as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOColor(UnityEngine.UI.Graphic,UnityEngine.Color,System.Single)">
+            <summary>Tweens an Graphic's color to the given value.
+            Also stores the image as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOFade(UnityEngine.UI.Graphic,System.Single,System.Single)">
+            <summary>Tweens an Graphic's alpha color to the given value.
+            Also stores the image as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOColor(UnityEngine.UI.Image,UnityEngine.Color,System.Single)">
+            <summary>Tweens an Image's color to the given value.
+            Also stores the image as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOFade(UnityEngine.UI.Image,System.Single,System.Single)">
+            <summary>Tweens an Image's alpha color to the given value.
+            Also stores the image as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOFillAmount(UnityEngine.UI.Image,System.Single,System.Single)">
+            <summary>Tweens an Image's fillAmount to the given value.
+            Also stores the image as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach (0 to 1)</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOGradientColor(UnityEngine.UI.Image,UnityEngine.Gradient,System.Single)">
+            <summary>Tweens an Image's colors using the given gradient
+            (NOTE 1: only uses the colors of the gradient, not the alphas - NOTE 2: creates a Sequence, not a Tweener).
+            Also stores the image as the tween's target so it can be used for filtered operations</summary>
+            <param name="gradient">The gradient to use</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOFlexibleSize(UnityEngine.UI.LayoutElement,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens an LayoutElement's flexibleWidth/Height to the given value.
+            Also stores the LayoutElement as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOMinSize(UnityEngine.UI.LayoutElement,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens an LayoutElement's minWidth/Height to the given value.
+            Also stores the LayoutElement as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOPreferredSize(UnityEngine.UI.LayoutElement,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens an LayoutElement's preferredWidth/Height to the given value.
+            Also stores the LayoutElement as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOColor(UnityEngine.UI.Outline,UnityEngine.Color,System.Single)">
+            <summary>Tweens a Outline's effectColor to the given value.
+            Also stores the Outline as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOFade(UnityEngine.UI.Outline,System.Single,System.Single)">
+            <summary>Tweens a Outline's effectColor alpha to the given value.
+            Also stores the Outline as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOScale(UnityEngine.UI.Outline,UnityEngine.Vector2,System.Single)">
+            <summary>Tweens a Outline's effectDistance to the given value.
+            Also stores the Outline as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPos(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPosX(UnityEngine.RectTransform,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition X to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPosY(UnityEngine.RectTransform,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition Y to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPos3D(UnityEngine.RectTransform,UnityEngine.Vector3,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition3D to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPos3DX(UnityEngine.RectTransform,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition3D X to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPos3DY(UnityEngine.RectTransform,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition3D Y to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorPos3DZ(UnityEngine.RectTransform,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition3D Z to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorMax(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchorMax to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOAnchorMin(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchorMin to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOPivot(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single)">
+            <summary>Tweens a RectTransform's pivot to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOPivotX(UnityEngine.RectTransform,System.Single,System.Single)">
+            <summary>Tweens a RectTransform's pivot X to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOPivotY(UnityEngine.RectTransform,System.Single,System.Single)">
+            <summary>Tweens a RectTransform's pivot Y to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOSizeDelta(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's sizeDelta to the given value.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOPunchAnchorPos(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Boolean)">
+            <summary>Punches a RectTransform's anchoredPosition towards the given direction and then back to the starting one
+            as if it was connected to the starting position via an elastic.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="punch">The direction and strength of the punch (added to the RectTransform's current position)</param>
+            <param name="duration">The duration of the tween</param>
+            <param name="vibrato">Indicates how much will the punch vibrate</param>
+            <param name="elasticity">Represents how much (0 to 1) the vector will go beyond the starting position when bouncing backwards.
+            1 creates a full oscillation between the punch direction and the opposite direction,
+            while 0 oscillates only between the punch and the start position</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOShakeAnchorPos(UnityEngine.RectTransform,System.Single,System.Single,System.Int32,System.Single,System.Boolean,System.Boolean)">
+            <summary>Shakes a RectTransform's anchoredPosition with the given values.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="duration">The duration of the tween</param>
+            <param name="strength">The shake strength</param>
+            <param name="vibrato">Indicates how much will the shake vibrate</param>
+            <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+            Setting it to 0 will shake along a single direction.</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+            <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
+        </member>
+        <member name="M:DOTweenTools.DOShakeAnchorPos(UnityEngine.RectTransform,System.Single,UnityEngine.Vector2,System.Int32,System.Single,System.Boolean,System.Boolean)">
+            <summary>Shakes a RectTransform's anchoredPosition with the given values.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="duration">The duration of the tween</param>
+            <param name="strength">The shake strength on each axis</param>
+            <param name="vibrato">Indicates how much will the shake vibrate</param>
+            <param name="randomness">Indicates how much the shake will be random (0 to 180 - values higher than 90 kind of suck, so beware). 
+            Setting it to 0 will shake along a single direction.</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+            <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
+        </member>
+        <member name="M:DOTweenTools.DOJumpAnchorPos(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition to the given value, while also applying a jump effect along the Y axis.
+            Returns a Sequence instead of a Tweener.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param>
+            <param name="jumpPower">Power of the jump (the max height of the jump is represented by this plus the final Y offset)</param>
+            <param name="numJumps">Total number of jumps</param>
+            <param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DONormalizedPos(UnityEngine.UI.ScrollRect,UnityEngine.Vector2,System.Single,System.Boolean)">
+            <summary>Tweens a ScrollRect's horizontal/verticalNormalizedPosition to the given value.
+            Also stores the ScrollRect as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOHorizontalNormalizedPos(UnityEngine.UI.ScrollRect,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a ScrollRect's horizontalNormalizedPosition to the given value.
+            Also stores the ScrollRect as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOVerticalNormalizedPos(UnityEngine.UI.ScrollRect,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a ScrollRect's verticalNormalizedPosition to the given value.
+            Also stores the ScrollRect as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOValue(UnityEngine.UI.Slider,System.Single,System.Single,System.Boolean)">
+            <summary>Tweens a Slider's value to the given value.
+            Also stores the Slider as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.DOColor(UnityEngine.UI.Text,UnityEngine.Color,System.Single)">
+            <summary>Tweens a Text's color to the given value.
+            Also stores the Text as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOCounter(UnityEngine.UI.Text,System.Int32,System.Int32,System.Single,System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            Tweens a Text's text from one integer to another, with options for thousands separators
+            </summary>
+            <param name="fromValue">The value to start from</param>
+            <param name="endValue">The end value to reach</param>
+            <param name="duration">The duration of the tween</param>
+            <param name="addThousandsSeparator">If TRUE (default) also adds thousands separators</param>
+            <param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> to use (InvariantCulture if NULL)</param>
+        </member>
+        <member name="M:DOTweenTools.DOFade(UnityEngine.UI.Text,System.Single,System.Single)">
+            <summary>Tweens a Text's alpha color to the given value.
+            Also stores the Text as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOText(UnityEngine.UI.Text,System.String,System.Single,System.Boolean,DG.Tweening.ScrambleMode,System.String)">
+            <summary>Tweens a Text's text to the given value.
+            Also stores the Text as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The end string to tween to</param><param name="duration">The duration of the tween</param>
+            <param name="richTextEnabled">If TRUE (default), rich text will be interpreted correctly while animated,
+            otherwise all tags will be considered as normal text</param>
+            <param name="scrambleMode">The type of scramble mode to use, if any</param>
+            <param name="scrambleChars">A string containing the characters to use for scrambling.
+            Use as many characters as possible (minimum 10) because DOTween uses a fast scramble mode which gives better results with more characters.
+            Leave it to NULL (default) to use default ones</param>
+        </member>
+        <member name="M:DOTweenTools.DOBlendableColor(UnityEngine.UI.Graphic,UnityEngine.Color,System.Single)">
+            <summary>Tweens a Graphic's color to the given value,
+            in a way that allows other DOBlendableColor tweens to work together on the same target,
+            instead than fight each other as multiple DOColor would do.
+            Also stores the Graphic as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The value to tween to</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOBlendableColor(UnityEngine.UI.Image,UnityEngine.Color,System.Single)">
+            <summary>Tweens a Image's color to the given value,
+            in a way that allows other DOBlendableColor tweens to work together on the same target,
+            instead than fight each other as multiple DOColor would do.
+            Also stores the Image as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The value to tween to</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOBlendableColor(UnityEngine.UI.Text,UnityEngine.Color,System.Single)">
+            <summary>Tweens a Text's color BY the given value,
+            in a way that allows other DOBlendableColor tweens to work together on the same target,
+            instead than fight each other as multiple DOColor would do.
+            Also stores the Text as the tween's target so it can be used for filtered operations</summary>
+            <param name="endValue">The value to tween to</param><param name="duration">The duration of the tween</param>
+        </member>
+        <member name="M:DOTweenTools.DOShapeCircle(UnityEngine.RectTransform,UnityEngine.Vector2,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>Tweens a RectTransform's anchoredPosition so that it draws a circle around the given center.
+            Also stores the RectTransform as the tween's target so it can be used for filtered operations.<para/>
+            IMPORTANT: SetFrom(value) requires a <see cref="T:UnityEngine.Vector2"/> instead of a float, where the X property represents the "from degrees value"</summary>
+            <param name="center">Circle-center/pivot around which to rotate (in UI anchoredPosition coordinates)</param>
+            <param name="endValueDegrees">The end value degrees to reach (to rotate counter-clockwise pass a negative value)</param>
+            <param name="duration">The duration of the tween</param>
+            <param name="relativeCenter">If TRUE the <see cref="!:center"/> coordinates will be considered as relative to the target's current anchoredPosition</param>
+            <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
+        </member>
+        <member name="M:DOTweenTools.Utils.SwitchToRectTransform(UnityEngine.RectTransform,UnityEngine.RectTransform)">
+            <summary>
+            Converts the anchoredPosition of the first RectTransform to the second RectTransform,
+            taking into consideration offset, anchors and pivot, and returns the new anchoredPosition
+            </summary>
+        </member>
+        <member name="F:GameSetting.GameSettingData.Performance">
+            <summary>是否是性能模式</summary>
+        </member>
+        <member name="F:GameSetting.GameSettingData.BGMVolume">
+            <summary>背景音乐音量</summary>
+        </member>
+        <member name="F:GameSetting.GameSettingData.SoundVolume">
+            <summary>音效音量</summary>
+        </member>
+        <member name="P:GameSetting.SettingData">
+            <summary>
+            设置
+            </summary>
+        </member>
+        <member name="M:GameSetting.LoadSet(System.Action{System.Int32,System.Int32})">
+            <summary>
+            加载游戏设置
+            </summary>
+            <param name="setSound">加载完成后的回调.第一个参数是背景音量,第二个参数是音效音量</param>
+        </member>
+        <member name="M:ConditionalHideAttribute.#ctor(System.String)">
+            <summary>
+            控制一个目标是否显示隐藏
+            </summary>
+        </member>
+        <member name="M:ConditionalHideAttribute.#ctor(System.String,System.Boolean)">
+            <summary>
+            控制一个目标是否显示隐藏
+            </summary>
+        </member>
+        <member name="M:ConditionalHideAttribute.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            控制一个目标是否显示隐藏
+            </summary>
+        </member>
+        <member name="M:ConditionalHideAttribute.#ctor(System.Boolean)">
+            <summary>
+            控制一个目标是否显示隐藏
+            </summary>
+        </member>
+        <member name="M:ConditionalHideAttribute.#ctor(System.String[],System.Boolean[],System.Boolean,System.Boolean)">
+            <summary>
+            控制一个目标是否显示隐藏
+            </summary>
+        </member>
+        <member name="M:ConditionalHideAttribute.#ctor(System.String[],System.Boolean,System.Boolean)">
+            <summary>
+            控制一个目标是否显示隐藏
+            </summary>
+        </member>
+        <member name="T:LabelAttribute">
+            <summary>
+            字段名称标签
+            自定义 inspector 字段名称
+            </summary>
+        </member>
+        <member name="P:LabelAttribute.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="M:LabelAttribute.#ctor(System.String)">
+            <summary>
+            字段名称
+            </summary>
+            <param name="name">名称</param>
+        </member>
+        <member name="T:ZUIMgr.OpenViewType">
+            <summary>
+            UI打开和关闭的动效
+            </summary>
+        </member>
+        <member name="F:ZUIMgr.OpenViewType.Scale">
+            <summary>
+            缩放
+            </summary>
+        </member>
+        <member name="F:ZUIMgr.OpenViewType.Alpha">
+            <summary>
+            渐变
+            </summary>
+        </member>
+        <member name="F:ZUIMgr.OpenViewType.Move">
+            <summary>
+            移动
+            </summary>
+        </member>
+        <member name="P:ZUIMgr.IsClose">
+            <summary>
+            是否还有窗口可以关闭
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Init(MyTool.UnityComponents.PrefabDatas)">
+            <summary>
+            初始化UI框架
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Open``1(System.String,``0)">
+            <summary>
+            打开一个有参UI窗口
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Open(System.String)">
+            <summary>
+            打开一个无参UI窗口
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:ZUIMgr.Close">
+            <summary>
+            关闭最顶上的UI
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Close(System.String)">
+            <summary>
+            关闭最顶上的UI
+            </summary>
+        </member>
+    </members>
+</doc>
