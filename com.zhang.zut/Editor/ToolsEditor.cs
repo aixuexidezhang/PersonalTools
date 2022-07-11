@@ -7,7 +7,7 @@ public class ToolsEditor : Editor
 {
     #region SVN相关
 
-    [MenuItem("Tools/SVN/提交", false, 1)]
+    [MenuItem("Tools/版本管理/SVN/提交")]
 	static void SVNCommit()
 	{
 		List<string> pathList = new List<string>();
@@ -18,12 +18,12 @@ public class ToolsEditor : Editor
 		string commitPath = string.Join("*", pathList.ToArray());
 		ProcessCommand("TortoiseProc.exe", "/command:commit /path:" + commitPath);
 	}
-	[MenuItem("Tools/SVN/更新", false, 2)]
+	[MenuItem("Tools/版本管理/SVN/更新")]
 	static void SVNUpdate()
 	{
 		ProcessCommand("TortoiseProc.exe", "/command:update /path:" + SVNProjectPath + " /closeonend:0");
 	}
-	[MenuItem("Tools/SVN/日志", false, 5)]
+	[MenuItem("Tools/版本管理/SVN/日志")]
 	static void SVNLog()
 	{
 		ProcessCommand("TortoiseProc.exe", "/command:log /path:" + SVNProjectPath);
