@@ -11,7 +11,7 @@
   },
   "changelogUrl": "",
   "dependencies": {
-	"com.unity.nuget.newtonsoft-json": "2.0.0"
+    "com.unity.nuget.newtonsoft-json": "2.0.0"
   },
   "documentationUrl": "",
   "hideInEditor": false,
