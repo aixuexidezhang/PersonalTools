@@ -1,0 +1,1 @@
+{"changeLogFilePath":"ZUT/CHANGELOG.md","versionFilePath":"ZUT/VERSION","packageJsonFilePath":"ZUT/package.json"}
