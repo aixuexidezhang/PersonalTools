@@ -8,19 +8,19 @@ public class TortoiseEditor
     [MenuItem("Tools/版本管理/Git/StashSave")]
     public static void GitAssetsStushSave()
     {
-        TortoiseGit.GitCommand(GitType.StashSave, Application.dataPath + "/com.zhang.zut/", tortoiseGitPath);
+        TortoiseGit.GitCommand(GitType.StashSave, Application.dataPath, tortoiseGitPath);
     }
 
     [MenuItem("Tools/版本管理/Git/StashPop")]
     public static void GitAssetsStushPop()
     {
-        TortoiseGit.GitCommand(GitType.StashPop, Application.dataPath + "/com.zhang.zut/", tortoiseGitPath);
+        TortoiseGit.GitCommand(GitType.StashPop, Application.dataPath, tortoiseGitPath);
     }
 
     [MenuItem("Tools/版本管理/Git/Push")]
     public static void GitAssetPush()
     {
-        TortoiseGit.GitCommand(GitType.Push, Application.dataPath + "/com.zhang.zut", tortoiseGitPath);
+        TortoiseGit.GitCommand(GitType.Push, Application.dataPath, tortoiseGitPath);
     }
 
     [MenuItem("Tools/版本管理/Git/Log")]
@@ -34,20 +34,20 @@ public class TortoiseEditor
         }
         else
         {
-            TortoiseGit.GitCommand(GitType.Log, Application.dataPath + "/com.zhang.zut", tortoiseGitPath);
+            TortoiseGit.GitCommand(GitType.Log, Application.dataPath, tortoiseGitPath);
         }
     }
 
     [MenuItem("Tools/版本管理/Git/Pull")]
     public static void GitAssetsPull()
     {
-        TortoiseGit.GitCommand(GitType.Pull, Application.dataPath + "/com.zhang.zut", tortoiseGitPath);
+        TortoiseGit.GitCommand(GitType.Pull, Application.dataPath, tortoiseGitPath);
     }
 
     [MenuItem("Tools/版本管理/Git/Commit")]
     public static void GitAssetsCommit()
     {
-        TortoiseGit.GitCommand(GitType.Commit, Application.dataPath + "/com.zhang.zut", tortoiseGitPath);
+        TortoiseGit.GitCommand(GitType.Commit, Application.dataPath, tortoiseGitPath);
     }
 
     //[MenuItem("TortoiseGit/ProjectSettings/Log")]

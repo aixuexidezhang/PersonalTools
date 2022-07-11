@@ -1,6 +1,6 @@
 {
   "name": "com.zhang.zut",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "个人工具",
   "displayName": "ZUT",
   "unity": "2018.1",
@@ -9,7 +9,7 @@
     "email": "",
     "url": ""
   },
-  "changelogUrl": "",
+  "changelogUrl": "https://github.com/aixuexidezhang/ZUT/blob/main/CHANGELOG.md",
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "2.0.0"
   },
