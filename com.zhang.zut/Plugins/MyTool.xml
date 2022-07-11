@@ -470,12 +470,12 @@
             <param name="vertexs">顶点List集合</param>
             <returns></returns>
         </member>
-        <member name="T:MyTool.Tools.ObjectPool`1">
+        <member name="T:MyTool.Tools.UPool`1">
             <summary>
             对象池
             </summary>
         </member>
-        <member name="M:MyTool.Tools.ObjectPool`1.#ctor(`0,System.Int32,UnityEngine.Transform,System.Boolean)">
+        <member name="M:MyTool.Tools.UPool`1.#ctor(`0,System.Int32,UnityEngine.Transform,System.Boolean)">
             <summary>
             创建池
             </summary>
@@ -484,7 +484,7 @@
             <param name="PoolSize">初始化生成的数量</param>
             <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
         </member>
-        <member name="M:MyTool.Tools.ObjectPool`1.#ctor(UnityEngine.GameObject,System.Int32,UnityEngine.Transform,System.Boolean)">
+        <member name="M:MyTool.Tools.UPool`1.#ctor(UnityEngine.GameObject,System.Int32,UnityEngine.Transform,System.Boolean)">
             <summary>
             创建池,并且给对象添加对应的脚本
             </summary>
@@ -493,17 +493,17 @@
             <param name="PoolSize">初始化生成的数量</param>
             <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
         </member>
-        <member name="M:MyTool.Tools.ObjectPool`1.CloseAll">
+        <member name="M:MyTool.Tools.UPool`1.CloseAll">
             <summary>
             把全部对象设置为false
             </summary>
         </member>
-        <member name="T:MyTool.Tools.ObjectPool`2">
+        <member name="T:MyTool.Tools.UPool`2">
             <summary>
-            对象池
+            对象池 池中对象可以初始化参数
             </summary>
         </member>
-        <member name="M:MyTool.Tools.ObjectPool`2.#ctor(`0,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
+        <member name="M:MyTool.Tools.UPool`2.#ctor(`0,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
             <summary>
             创建池
             </summary>
@@ -512,7 +512,7 @@
             <param name="PoolSize">初始化生成的数量</param>
             <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
         </member>
-        <member name="M:MyTool.Tools.ObjectPool`2.#ctor(UnityEngine.GameObject,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
+        <member name="M:MyTool.Tools.UPool`2.#ctor(UnityEngine.GameObject,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
             <summary>
             创建池,并且给对象添加对应的脚本
             </summary>
@@ -521,7 +521,7 @@
             <param name="PoolSize">初始化生成的数量</param>
             <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
         </member>
-        <member name="M:MyTool.Tools.ObjectPool`2.CloseAll">
+        <member name="M:MyTool.Tools.UPool`2.CloseAll">
             <summary>
             把全部对象设置为false
             </summary>
