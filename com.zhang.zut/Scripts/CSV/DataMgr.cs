@@ -10,26 +10,52 @@ using UnityEngine.Networking;
 
 public class DataMgr
 {
-  public static IEnumerator Load()
+
+    public static Dictionary<int, Role> Role = new Dictionary<int, Role>();
+
+    public static IEnumerator Load(Action OverCellback = null)
     {
-        var t = typeof(DataMgr);
-        FieldInfo[] tfInfos = t.GetFields(BindingFlags.Public | BindingFlags.Static);
+        yield return null;
+        OverCellback?.Invoke();
+        Debug.Log("所有的Table加载完毕");
+    }
 
-        foreach (var item in tfInfos)
+    /// <summary>
+    /// 自动加载,所有的表的Key只能是Int的id时才可以使用
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="OverCellback"></param>
+    public static async void AutoLoad(Type type, Action OverCellback = null)
+    {
+        try
         {
-            var d = item.GetValue(t) as IDictionary;
-
+            FieldInfo[] tfInfos = type.GetFields(BindingFlags.Public | BindingFlags.Static);
+            foreach (var item in tfInfos)
+            {
+                var d = item.GetValue(type) as IDictionary;
 #if UNITY_ANDROID && !UNITY_EDITOR
             var uri = new System.Uri(Path.Combine(Application.streamingAssetsPath, "Tables", item.Name + ".csv"));
             var request = UnityWebRequest.Get(uri.AbsoluteUri);
-            yield return request.SendWebRequest();
+            var swr = request.SendWebRequest();
+            while (!swr.isDone)
+            {
+                await Task.Delay(10);
+            }
             d.LoadDicAndroid(item.Name, request.downloadHandler.text);
-            yield return null;
+            await Task.Delay(10);
+
 #else
-            d.LoadDic(item.Name);
-            yield return null;
+                d.LoadDic(item.Name,"Id");
+                await Task.Delay(10);
 #endif
+            }
+            Debug.Log("所有的Table加载完毕");
+            OverCellback?.Invoke();
         }
-        Debug.Log("所有的Table加载完毕");
+        catch (Exception e)
+        {
+
+            throw e;
+        }
     }
 }

@@ -9,12 +9,16 @@ using System.Reflection;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
-#if UNITY_EDITOR
+
 public class CSVToClass : Editor
 {
     static string datapath = "Tables/";
     static string GetCSVPath = Path.Combine(Application.streamingAssetsPath, datapath);
     static string GetClassPath = string.Concat(Application.dataPath, "/Scripts/Datas/");
+
+    private static int currIndex = 0;
+    private static int fileCount = 0;
+
     [MenuItem("CSV/生成类", false, 1)]
     static void GetCsvCreateClassOrEnum()
     {
@@ -29,15 +33,24 @@ public class CSVToClass : Editor
 
 
         DirectoryInfo folder = new DirectoryInfo(GetCSVPath);
-        foreach (FileInfo file in folder.GetFiles("*.csv"))
+
+        FileInfo[] infos = folder.GetFiles("*.csv");
+
+        fileCount = infos.Length;
+        foreach (FileInfo file in infos)
         {
+            currIndex++;
             string filePath = file.FullName;
-            Encoding _conding = GetType(filePath);//获取文件编码类型
+            Encoding _conding = GetType(filePath); //获取文件编码类型
             FileStream _fileStream = new FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read);
 
-            string fileName = Path.GetFileNameWithoutExtension(filePath);//返回带扩展名的文件名
+            string fileName = Path.GetFileNameWithoutExtension(filePath); //返回带扩展名的文件名
 
             StreamReader _sreamReader = new StreamReader(_fileStream, _conding);
+
+
+            EditorUtility.DisplayProgressBar("CreateClass", $"Curr Create Class :{fileName}",
+                (currIndex / fileCount));
 
             if (fileName.Contains("enum") || fileName.Contains("Enum"))
             {
@@ -53,6 +66,7 @@ public class CSVToClass : Editor
             _fileStream.Close();
             _sreamReader.Close();
         }
+
 
         //把该命名空间加入到编译器单元的命名空间集合中
         unit.Namespaces.Add(myNamespace);
@@ -79,6 +93,7 @@ public class CSVToClass : Editor
                 //为指定的代码文档对象模型(CodeDOM) 编译单元生成代码并将其发送到指定的文本编写器，使用指定的选项。(官方解释)
                 //将自定义代码编译器(代码内容)、和代码格式写入到sw中
                 provider.GenerateCodeFromCompileUnit(unit, sw, options);
+                EditorUtility.ClearProgressBar();
             }
         }
         else
@@ -89,9 +104,11 @@ public class CSVToClass : Editor
                 //为指定的代码文档对象模型(CodeDOM) 编译单元生成代码并将其发送到指定的文本编写器，使用指定的选项。(官方解释)
                 //将自定义代码编译器(代码内容)、和代码格式写入到sw中
                 provider.GenerateCodeFromCompileUnit(unit, sw, options);
+                EditorUtility.ClearProgressBar();
             }
         }
-
+        Debug.Log("加载完成");
+        AssetDatabase.Refresh();
     }
 
     /// <summary>
@@ -104,17 +121,17 @@ public class CSVToClass : Editor
             DirectoryInfo dir = new DirectoryInfo(GetClassPath);
             if (dir.Exists)
             {
-                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //返回目录中所有文件和子目录
+                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos(); //返回目录中所有文件和子目录
                 foreach (FileSystemInfo i in fileinfo)
                 {
-                    if (i is DirectoryInfo)            //判断是否文件夹
+                    if (i is DirectoryInfo) //判断是否文件夹
                     {
                         DirectoryInfo subdir = new DirectoryInfo(i.FullName);
-                        subdir.Delete(true);          //删除子目录和文件
+                        subdir.Delete(true); //删除子目录和文件
                     }
                     else
                     {
-                        File.Delete(i.FullName);      //删除指定文件
+                        File.Delete(i.FullName); //删除指定文件
                     }
                 }
             }
@@ -131,12 +148,12 @@ public class CSVToClass : Editor
 
         //每行的数据
         string strLine = "";
-        bool _notFirstLine = false;
         while ((strLine = streamReader.ReadLine()) != null)
         {
             var arrLien = strLine.Split(',');
             enumNames.Add(arrLien[0]);
         }
+
         return BuildEnumClass(fileName, enumNames);
     }
 
@@ -149,7 +166,7 @@ public class CSVToClass : Editor
     {
         Dictionary<string, string> _calssData = new Dictionary<string, string>();
 
-        var _tableHead = streamReader.ReadLine().Split(',');//读取一行的记录数
+        var _tableHead = streamReader.ReadLine().Split(','); //读取一行的记录数
 
         var columnCount = _tableHead.Length;
         for (int i = 0; i < columnCount; i++)
@@ -162,6 +179,10 @@ public class CSVToClass : Editor
                 string _varName = _varInfo[0];
                 _calssData.Add(_varName, _varType);
             }
+            catch (IndexOutOfRangeException ex)
+            {
+                //超出索引
+            }
             catch (Exception ex)
             {
                 Debug.LogError($"Error:{ex}");
@@ -169,8 +190,8 @@ public class CSVToClass : Editor
         }
 
         return BuildClass(fileName, _calssData);
-
     }
+
     /// <summary>
     /// 生成枚举类
     /// </summary>
@@ -184,9 +205,8 @@ public class CSVToClass : Editor
         //指定为类
         myClass.IsClass = true;
         //设置类的访问类型
-        myClass.TypeAttributes = TypeAttributes.Public;// | TypeAttributes.Sealed;
-                                                       //定义枚举参数
-        myClass.CustomAttributes.Add(new CodeAttributeDeclaration(new CodeTypeReference(typeof(DescriptionAttribute))));
+        myClass.TypeAttributes = TypeAttributes.Public; // | TypeAttributes.Sealed;
+        myClass.CustomAttributes.Add(new CodeAttributeDeclaration("Serializable"));
         myClass.IsEnum = true;
         myClass.TypeAttributes = TypeAttributes.Public;
 
@@ -208,17 +228,16 @@ public class CSVToClass : Editor
     /// <param name="classData">参数名称/参数类型</param>
     public static CodeTypeDeclaration BuildClass(string className, Dictionary<string, string> classData)
     {
-
         //Code:代码体
         CodeTypeDeclaration myClass = new CodeTypeDeclaration(className);
         //指定为类
         myClass.IsClass = true;
         //设置类的访问类型
         myClass.TypeAttributes = TypeAttributes.Public;
-
+        myClass.CustomAttributes.Add(new CodeAttributeDeclaration("Serializable"));
         foreach (var item in classData)
         {
-            myClass.Members.Add(BuildClassVar(item.Key, item.Value));// 添加字段
+            myClass.Members.Add(BuildClassVar(item.Key, item.Value)); // 添加字段
         }
 
         return myClass;
@@ -246,47 +265,49 @@ public class CSVToClass : Editor
     public static CodeTypeReference GetVarType(string type)
     {
         CodeTypeReference _codeTypeReference = null;
-
         switch (type)
         {
             case "string":
             case "String":
-                _codeTypeReference = new CodeTypeReference(typeof(System.String));
+                _codeTypeReference = new CodeTypeReference(typeof(string));
                 break;
             case "int":
             case "Int32":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Int32));
+                _codeTypeReference = new CodeTypeReference(typeof(int));
                 break;
             case "long":
             case "Int64":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Int64));
+                _codeTypeReference = new CodeTypeReference(typeof(long));
                 break;
             case "double":
             case "Double":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Double));
+                _codeTypeReference = new CodeTypeReference(typeof(double));
                 break;
             case "float":
             case "Single":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Single));
+                _codeTypeReference = new CodeTypeReference(typeof(float));
                 break;
             case "bool":
             case "Boolean":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Boolean));
+                _codeTypeReference = new CodeTypeReference(typeof(bool));
                 break;
             case "short":
             case "Int16":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Int16));
+                _codeTypeReference = new CodeTypeReference(typeof(short));
                 break;
             case "byte":
             case "Byte":
-                _codeTypeReference = new CodeTypeReference(typeof(System.Byte));
+                _codeTypeReference = new CodeTypeReference(typeof(byte));
                 break;
             case "ushort":
             case "UInt16":
-                _codeTypeReference = new CodeTypeReference(typeof(System.UInt16));
+                _codeTypeReference = new CodeTypeReference(typeof(ushort));
                 break;
-            case "enum"://这里要做特殊处理
+            case "enum": //这里要做特殊处理
                 _codeTypeReference = new CodeTypeReference(typeof(System.Enum));
+                break;
+            default:
+                _codeTypeReference = new CodeTypeReference(type);
                 break;
         }
 
@@ -329,6 +350,7 @@ public class CSVToClass : Editor
         {
             reVal = Encoding.Unicode;
         }
+
         r.Close();
         return reVal;
     }
@@ -338,7 +360,7 @@ public class CSVToClass : Editor
     /// <returns></returns>
     private static bool IsUTF8Bytes(byte[] data)
     {
-        int charByteCounter = 1;  //计算当前正分析的字符应还有的字节数
+        int charByteCounter = 1; //计算当前正分析的字符应还有的字节数
         byte curByte; //当前分析的字节.
         for (int i = 0; i < data.Length; i++)
         {
@@ -352,6 +374,7 @@ public class CSVToClass : Editor
                     {
                         charByteCounter++;
                     }
+
                     //标记位首位若为非0 则至少以2个1开始 如:110XXXXX...........1111110X　
                     if (charByteCounter == 1 || charByteCounter > 6)
                     {
@@ -366,15 +389,16 @@ public class CSVToClass : Editor
                 {
                     return false;
                 }
+
                 charByteCounter--;
             }
         }
+
         if (charByteCounter > 1)
         {
             throw new Exception("非预期的byte格式");
         }
+
         return true;
     }
-
 }
-#endif
