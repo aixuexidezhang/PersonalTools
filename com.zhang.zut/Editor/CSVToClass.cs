@@ -304,7 +304,7 @@ public class CSVToClass : Editor
                 _codeTypeReference = new CodeTypeReference(typeof(ushort));
                 break;
             case "enum": //这里要做特殊处理
-                _codeTypeReference = new CodeTypeReference(typeof(System.Enum));
+                _codeTypeReference = new CodeTypeReference(typeof(Enum));
                 break;
             default:
                 _codeTypeReference = new CodeTypeReference(type);
