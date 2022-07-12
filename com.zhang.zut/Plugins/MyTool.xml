@@ -470,10 +470,8 @@
             <param name="vertexs">顶点List集合</param>
             <returns></returns>
         </member>
-        <member name="T:MyTool.Tools.UPool`1">
-            <summary>
-            对象池
-            </summary>
+        <member name="P:MyTool.Tools.UPool`1.Take">
+            <summary>从池中获取一个对象</summary>
         </member>
         <member name="M:MyTool.Tools.UPool`1.#ctor(`0,System.Int32,UnityEngine.Transform,System.Boolean)">
             <summary>
@@ -501,6 +499,9 @@
         <member name="T:MyTool.Tools.UPool`2">
             <summary> 对象池对象传参 </summary>
         </member>
+        <member name="P:MyTool.Tools.UPool`2.Take">
+            <summary>从池中获取一个对象</summary>
+        </member>
         <member name="M:MyTool.Tools.UPool`2.#ctor(`0,`1,System.Int32,UnityEngine.Transform,System.Boolean)">
             <summary>
             创建池
@@ -518,6 +519,12 @@
             <param name="p">父级</param>
             <param name="PoolSize">初始化生成的数量</param>
             <param name="isCopy">是否开启复制,如果不开启就会在池完的时候把第一个返回,如果开启就会返回一个新的</param>
+        </member>
+        <member name="M:MyTool.Tools.UPool`2.Get">
+            <summary>从池中获取一个对象</summary>
+        </member>
+        <member name="M:MyTool.Tools.UPool`2.Find(System.String)">
+            <summary>从池中查找一个对象</summary>
         </member>
         <member name="M:MyTool.Tools.UPool`2.CloseAll">
             <summary>
