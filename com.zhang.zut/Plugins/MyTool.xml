@@ -703,7 +703,7 @@
             打开一个有参UI窗口
             </summary>
         </member>
-        <member name="M:ZUIMgr.Open(System.String)">
+        <member name="M:ZUIMgr.Open(System.String,System.Action)">
             <summary>
             打开一个无参UI窗口
             </summary>
