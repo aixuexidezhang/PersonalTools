@@ -668,5 +668,55 @@
             </summary>
             <param name="name">名称</param>
         </member>
+        <member name="T:ZUIMgr.UIEffect">
+            <summary>
+            UI打开和关闭的动效
+            </summary>
+        </member>
+        <member name="F:ZUIMgr.UIEffect.Scale">
+            <summary>缩放 </summary>
+        </member>
+        <member name="F:ZUIMgr.UIEffect.Alpha">
+            <summary>渐变</summary>
+        </member>
+        <member name="F:ZUIMgr.UIEffect.Move">
+            <summary>移动</summary>
+        </member>
+        <member name="P:ZUIMgr.IsClose">
+            <summary>
+            是否还有窗口可以关闭
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Init(MyTool.UnityComponents.PrefabDatas)">
+            <summary>
+            初始化UI框架
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Open``1(System.String,``0,ZUIMgr.UIEffect,System.Action)">
+            <summary>
+            打开一个有参UI窗口
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Open(System.String,ZUIMgr.UIEffect,System.Action)">
+            <summary>
+            打开一个无参UI窗口
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:ZUIMgr.Close(System.Action)">
+            <summary>
+            关闭最顶上的UI
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Close(ZUI.ZUIRoot,System.Action)">
+            <summary>
+            关闭最顶上的UI
+            </summary>
+        </member>
+        <member name="M:ZUIMgr.Close(System.String,System.Action)">
+            <summary>
+            关闭最顶上的UI
+            </summary>
+        </member>
     </members>
 </doc>
