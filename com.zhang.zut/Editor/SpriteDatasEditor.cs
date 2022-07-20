@@ -39,7 +39,7 @@ public class SpriteDatasEditor : Editor
         Debug.Log("刷新 SpriteDatabase:  \"" + db.name + "\"");
         string path = AssetDatabase.GetAssetPath(db);
         db.Datas?.Clear();
-        path = GetAssetPath.GetAbsolutePath(path);
+        path = MyTool.Tools.FileTools.GetAbsolutePath(path);
         path = path.Replace(Path.GetFileName(path), "");
         List<FileInfo> files = new List<FileInfo>();
         if (db.TaggetPaths != null && db.TaggetPaths.Length > 0)
@@ -48,7 +48,7 @@ public class SpriteDatasEditor : Editor
             {
                 try
                 {
-                    var f = FindFileSearch(string.Concat(Application.dataPath.Remove(Application.dataPath.IndexOf("Assets")), p), "*");
+                    var f = MyTool.Tools.FileTools.FindFileSearch(string.Concat(Application.dataPath.Remove(Application.dataPath.IndexOf("Assets")), p), "*");
                     files.AddRange(f);
                 }
                 catch (System.Exception)
@@ -60,19 +60,18 @@ public class SpriteDatasEditor : Editor
         }
         else
         {
-            files = FindFileSearch(path, "*");
+            files = MyTool.Tools.FileTools.FindFileSearch(path, "*");
         }
         for (int i = 0; i < files.Count; i++)
         {
             var f = files[i];
-            var assets = AssetDatabase.LoadAllAssetsAtPath(GetAssetPath.GetRelativePath(f.FullName));
+            var assets = AssetDatabase.LoadAllAssetsAtPath(MyTool.Tools.FileTools.GetRelativePath(f.FullName));
             for (int j = 0; j < assets.Length; j++)
             {
                 var a = assets[j];
                 Sprite s = a as Sprite;
                 if (s == null)
                     continue;
-
                 db.Datas.Add(s);
                 Debug.Log("添加 \"" + s.name + "\"");
                 EditorUtility.DisplayProgressBar("refreshing...", s.name, (float)i / files.Count);

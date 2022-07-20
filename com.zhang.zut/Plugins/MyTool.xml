@@ -166,6 +166,51 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "M:MyTool.Tools.DOTweenTools.Fade(UnityEngine.UI.Graphic,System.Single,System.Single)" -->
+        <member name="M:MyTool.Tools.FileTools.LoadAllFiles(System.String,System.String)">
+            <summary>
+            获取某个路径下的某个后缀类型的文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="suffix"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.FileTools.FindFileSearch(System.String,System.String)">
+            <summary>
+            查找指定后缀名的文件
+            </summary>
+            <param name="path">路径</param>
+            <param name="pattern">要查找的后缀名如*.txt</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.FileTools.FindFileSearch(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            查找指定后缀名的文件
+            </summary>
+            <param name="d">new DirectoryInfo(path)</param>
+            <param name="pattern">要查找的后缀名如*.txt</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.FileTools.GetAbsolutePath(System.String)">
+            <summary>
+            获取绝对路径
+            </summary>
+            <param name="pathName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.FileTools.GetRelativePath(System.String)">
+            <summary>
+            获取相对路径
+            </summary>
+            <param name="pathName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTool.Tools.FileTools.GetAssetName(System.String)">
+            <summary>
+            获取文件名
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
         <member name="T:MyTool.Tools.MyTools">
             <summary>
             杂项工具类
@@ -350,6 +395,16 @@
             <param name="path">路径</param>
             <param name="filename">文件名（包含后缀）</param>
         </member>
+        <member name="M:MyTool.Tools.Data.Judge_Equality(System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[],System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[])">
+            <summary>
+            判断里面的属性和字段的值是否都一致
+            </summary>
+            <param name="field"></param>
+            <param name="property"></param>
+            <param name="field2"></param>
+            <param name="property2"></param>
+            <returns></returns>
+        </member>
         <member name="M:MyTool.Tools.Data.XmlSingleRemove``1(``0,System.String,System.String)">
             <summary>
             删除XML中某段数据  单个
@@ -389,65 +444,11 @@
             <param name="path">路径</param>
             <param name="filename">文件名（包含后缀）</param>
         </member>
-        <member name="M:MyTool.Tools.Data.LoadAllFiles(System.String,System.String)">
-            <summary>
-            获取某个路径下的某个后缀类型的文件
-            </summary>
-            <param name="path">路径</param>
-            <param name="suffix"></param>
-            <returns></returns>
+        <member name="M:MyTool.Tools.Data.SaveData``1(``0,System.Func{System.String,System.Boolean},System.String)">
+            <summary>保存数据到PlayerPrefs</summary>
         </member>
-        <member name="M:MyTool.Tools.Data.FindFileSearch(System.String,System.String)">
-            <summary>
-            查找指定后缀名的文件
-            </summary>
-            <param name="path">路径</param>
-            <param name="pattern">要查找的后缀名如*.txt</param>
-            <returns></returns>
-        </member>
-        <member name="M:MyTool.Tools.Data.FindFileSearch(System.IO.DirectoryInfo,System.String)">
-            <summary>
-            查找指定后缀名的文件
-            </summary>
-            <param name="d">new DirectoryInfo(path)</param>
-            <param name="pattern">要查找的后缀名如*.txt</param>
-            <returns></returns>
-        </member>
-        <member name="M:MyTool.Tools.Data.Judge_Equality(System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[],System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[])">
-            <summary>
-            判断里面的属性和字段的值是否都一致
-            </summary>
-            <param name="field"></param>
-            <param name="property"></param>
-            <param name="field2"></param>
-            <param name="property2"></param>
-            <returns></returns>
-        </member>
-        <member name="T:MyTool.Tools.Data.GetAssetPath">
-            <summary>
-            Unity路径
-            </summary>
-        </member>
-        <member name="M:MyTool.Tools.Data.GetAssetPath.GetAbsolutePath(System.String)">
-            <summary>
-            获取绝对路径
-            </summary>
-            <param name="pathName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MyTool.Tools.Data.GetAssetPath.GetRelativePath(System.String)">
-            <summary>
-            获取相对路径
-            </summary>
-            <param name="pathName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MyTool.Tools.Data.GetAssetPath.GetAssetName(System.String)">
-            <summary>
-            获取文件名
-            </summary>
-            <param name="path"></param>
-            <returns></returns>
+        <member name="M:MyTool.Tools.Data.LoadData``1(System.String)">
+            <summary>从PlayerPrefs读取数据</summary>
         </member>
         <member name="T:MyTool.Tools.MathTool">
             <summary>
@@ -620,26 +621,6 @@
             </summary>
             <param name="eventData"></param>
         </member>
-        <member name="F:GameSetting.GameSettingData.Performance">
-            <summary>是否是性能模式</summary>
-        </member>
-        <member name="F:GameSetting.GameSettingData.BGMVolume">
-            <summary>背景音乐音量</summary>
-        </member>
-        <member name="F:GameSetting.GameSettingData.SoundVolume">
-            <summary>音效音量</summary>
-        </member>
-        <member name="P:GameSetting.SettingData">
-            <summary>
-            设置
-            </summary>
-        </member>
-        <member name="M:GameSetting.LoadSet(System.Action{System.Int32,System.Int32})">
-            <summary>
-            加载游戏设置
-            </summary>
-            <param name="setSound">加载完成后的回调.第一个参数是背景音量,第二个参数是音效音量</param>
-        </member>
         <member name="M:ConditionalHideAttribute.#ctor(System.String)">
             <summary>
             控制一个目标是否显示隐藏
@@ -717,7 +698,7 @@
             初始化UI框架
             </summary>
         </member>
-        <member name="M:ZUIMgr.Open``1(System.String,``0)">
+        <member name="M:ZUIMgr.Open``1(System.String,``0,System.Action)">
             <summary>
             打开一个有参UI窗口
             </summary>
@@ -728,12 +709,12 @@
             </summary>
             <param name="name"></param>
         </member>
-        <member name="M:ZUIMgr.Close">
+        <member name="M:ZUIMgr.Close(System.Action)">
             <summary>
             关闭最顶上的UI
             </summary>
         </member>
-        <member name="M:ZUIMgr.Close(System.String)">
+        <member name="M:ZUIMgr.Close(System.String,System.Action)">
             <summary>
             关闭最顶上的UI
             </summary>
