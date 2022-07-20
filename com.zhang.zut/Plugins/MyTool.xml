@@ -714,6 +714,11 @@
             关闭最顶上的UI
             </summary>
         </member>
+        <member name="M:ZUIMgr.Close(ZUI.ZUIRoot,System.Action)">
+            <summary>
+            关闭最顶上的UI
+            </summary>
+        </member>
         <member name="M:ZUIMgr.Close(System.String,System.Action)">
             <summary>
             关闭最顶上的UI
