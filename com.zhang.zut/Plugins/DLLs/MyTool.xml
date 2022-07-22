@@ -574,7 +574,7 @@
             重置比例
             </summary>
         </member>
-        <member name="M:MyTool.UnityComponents.UI_Click.SetInteractable(System.Boolean)">
+        <member name="M:MyTool.UnityComponents.UI_Click.SetInteractable(System.Boolean,System.Boolean)">
             <summary>
             设置是否禁用
             </summary>
