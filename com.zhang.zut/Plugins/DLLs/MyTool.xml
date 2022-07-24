@@ -255,9 +255,14 @@
             返回深复制对象
             </summary>
         </member>
-        <member name="M:MyTool.Tools.MyTool.Clone``1(``0,UnityEngine.Transform)">
+        <member name="M:MyTool.Tools.MyTool.GameObjectClone``1(``0,UnityEngine.Transform)">
             <summary>
-            复制Unity游戏对象
+            复制GameObject
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.MyTool.ComponentClone``1(``0,UnityEngine.Transform)">
+            <summary>
+            复制Component
             </summary>
         </member>
         <member name="M:MyTool.Tools.RigidBodyTool.IsRelativeMove(UnityEngine.Rigidbody)">
