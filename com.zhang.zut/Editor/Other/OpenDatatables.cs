@@ -41,12 +41,10 @@ namespace MyTool.UnityComponents
 			}
 			else
 			{
-				var w = EditorWindow.GetWindow<ConfirmCreateSQLite>("文件以及存在是否覆盖?");
-				w.Show();
-				w.maxSize = new Vector2(200, 80);
+				if (EditorUtility.DisplayDialog("创建失败", "已经存在Data.db", "覆盖", "取消"))
+					SQLiteHelper.NewDbFile(Path.Combine(Application.streamingAssetsPath, "Data.db"));
 			}
 		}
-
 
 		[MenuItem("Tools/SQLite/打开SQLite", false, 1)]
 		public static void OpenSQLite()
@@ -61,17 +59,6 @@ namespace MyTool.UnityComponents
 			else
 			{
 				Debug.LogError("没有找到Data.db");
-			}
-		}
-		class ConfirmCreateSQLite : EditorWindow
-		{
-
-			private void OnGUI()
-			{
-				GUILayout.Space(20);
-				if (GUILayout.Button("覆盖")) { SQLiteHelper.NewDbFile(Path.Combine(Application.streamingAssetsPath, "Data.db")); Close(); }
-				GUILayout.Space(20);
-				if (GUILayout.Button("取消")) Close();
 			}
 		}
 	}

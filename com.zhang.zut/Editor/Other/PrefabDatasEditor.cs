@@ -38,7 +38,7 @@ public class PrefabDatasEditor : Editor
         Debug.Log("刷新 SpriteDatabase: \"" + db.name + "\"");
         string path = AssetDatabase.GetAssetPath(db);
         db.Datas?.Clear();
-        path = MyTool.Tools.FileTools.GetAbsolutePath(path);
+        path = MyTool.Tools.FileTool.GetAbsolutePath(path);
         path = path.Replace(Path.GetFileName(path), "");
         List<FileInfo> files;
         if (db.TaggetPaths != null && db.TaggetPaths.Length > 0)
@@ -48,7 +48,7 @@ public class PrefabDatasEditor : Editor
             {
                 try
                 {
-                    var f = MyTool.Tools.FileTools.FindFileSearch(string.Concat(Application.dataPath.Remove(Application.dataPath.IndexOf("Assets")), p), "*.prefab");
+                    var f = MyTool.Tools.FileTool.FindFileSearch(string.Concat(Application.dataPath.Remove(Application.dataPath.IndexOf("Assets")), p), "*.prefab");
                     files.AddRange(f);
                 }
                 catch (System.Exception)
@@ -60,13 +60,13 @@ public class PrefabDatasEditor : Editor
         }
         else
         {
-            files = MyTool.Tools.FileTools.FindFileSearch(path, "*.prefab");
+            files = MyTool.Tools.FileTool.FindFileSearch(path, "*.prefab");
         }
 
         for (int i = 0; i < files.Count; i++)
         {
             var f = files[i];
-            var assets = AssetDatabase.LoadAssetAtPath(MyTool.Tools.FileTools.GetRelativePath(f.FullName), typeof(GameObject));
+            var assets = AssetDatabase.LoadAssetAtPath(MyTool.Tools.FileTool.GetRelativePath(f.FullName), typeof(GameObject));
             db.Datas.Add((GameObject)assets);
         }
         EditorUtility.ClearProgressBar();

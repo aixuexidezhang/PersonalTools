@@ -166,7 +166,7 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "M:MyTool.Tools.DOTweenTools.Fade(UnityEngine.UI.Graphic,System.Single,System.Single)" -->
-        <member name="M:MyTool.Tools.FileTools.LoadAllFiles(System.String,System.String)">
+        <member name="M:MyTool.Tools.FileTool.LoadAllFiles(System.String,System.String)">
             <summary>
             获取某个路径下的某个后缀类型的文件
             </summary>
@@ -174,7 +174,7 @@
             <param name="suffix"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.FileTools.FindFileSearch(System.String,System.String)">
+        <member name="M:MyTool.Tools.FileTool.FindFileSearch(System.String,System.String)">
             <summary>
             查找指定后缀名的文件
             </summary>
@@ -182,7 +182,7 @@
             <param name="pattern">要查找的后缀名如*.txt</param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.FileTools.FindFileSearch(System.IO.DirectoryInfo,System.String)">
+        <member name="M:MyTool.Tools.FileTool.FindFileSearch(System.IO.DirectoryInfo,System.String)">
             <summary>
             查找指定后缀名的文件
             </summary>
@@ -190,33 +190,33 @@
             <param name="pattern">要查找的后缀名如*.txt</param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.FileTools.GetAbsolutePath(System.String)">
+        <member name="M:MyTool.Tools.FileTool.GetAbsolutePath(System.String)">
             <summary>
             获取绝对路径
             </summary>
             <param name="pathName"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.FileTools.GetRelativePath(System.String)">
+        <member name="M:MyTool.Tools.FileTool.GetRelativePath(System.String)">
             <summary>
             获取相对路径
             </summary>
             <param name="pathName"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.FileTools.GetAssetName(System.String)">
+        <member name="M:MyTool.Tools.FileTool.GetAssetName(System.String)">
             <summary>
             获取文件名
             </summary>
             <param name="path"></param>
             <returns></returns>
         </member>
-        <member name="T:MyTool.Tools.MyTools">
+        <member name="T:MyTool.Tools.MyTool">
             <summary>
             杂项工具类
             </summary>
         </member>
-        <member name="M:MyTool.Tools.MyTools.Timer(System.Int32,System.Action,System.Boolean)">
+        <member name="M:MyTool.Tools.MyTool.Timer(System.Int32,System.Action,System.Boolean)">
             <summary>
             Task计时器
             </summary>
@@ -224,7 +224,7 @@
             <param name="over">结束回调</param>
             <param name="loop">是否循环执行</param>
         </member>
-        <member name="M:MyTool.Tools.MyTools.Timer(System.Single,MyTool.Tools.ShortcutsCellbackFloat,System.Action,System.Boolean)">
+        <member name="M:MyTool.Tools.MyTool.Timer(System.Single,ShortcutsCellbackFloat,System.Action,System.Boolean)">
             <summary>
             DoTween倒计时计时器
             </summary>
@@ -234,7 +234,7 @@
             <param name="loop">是否循环执行</param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.MyTools.Timer(System.Single,System.Action,System.Boolean)">
+        <member name="M:MyTool.Tools.MyTool.Timer(System.Single,System.Action,System.Boolean)">
             <summary>
             DoTween倒计时计时器
             </summary>
@@ -242,7 +242,7 @@
             <param name="action">完成倒计时的回调</param>
             <param name="loop">是否循环执行</param>
         </member>
-        <member name="M:MyTool.Tools.MyTools.RandomGet``1(System.Collections.Generic.List{``0})">
+        <member name="M:MyTool.Tools.MyTool.RandomGet``1(System.Collections.Generic.List{``0})">
             <summary>
             随机获取List中的一个数据
             </summary>
@@ -250,10 +250,59 @@
             <param name="list"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTool.Tools.MyTools.CreateDeepClone``1(``0)">
+        <member name="M:MyTool.Tools.MyTool.CreateDeepClone``1(``0)">
             <summary>
             返回深复制对象
             </summary>
+        </member>
+        <member name="M:MyTool.Tools.MyTool.Clone``1(``0,UnityEngine.Transform)">
+            <summary>
+            复制Unity游戏对象
+            </summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.IsRelativeMove(UnityEngine.Rigidbody)">
+            <summary>是否移动?检测velocity</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.MoveInTopDown(UnityEngine.Rigidbody,UnityEngine.Vector2,System.Single,UnityEngine.Transform,UnityEngine.Transform)">
+            <summary>Topdown角色移动</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.MoveInFPS(UnityEngine.Rigidbody,UnityEngine.Vector2,System.Single,System.Single,UnityEngine.Transform)">
+            <summary>FPS角色移动</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.Falling(UnityEngine.Rigidbody,System.Single,System.Single,System.Single)">
+            <summary>下落</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.Jump(UnityEngine.Rigidbody,System.Single)">
+            <summary>跳</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.LookAroundInSpace(UnityEngine.Rigidbody,UnityEngine.Vector2,System.Single,UnityEngine.Transform)">
+            <summary>在太空中旋转</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.LookAround(UnityEngine.Rigidbody,System.Single,System.Single,UnityEngine.Transform)">
+            <summary>在地面左右看</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.LookUpOrDownSide(UnityEngine.Rigidbody,System.Single,System.Single,UnityEngine.Transform)">
+            <summary>在地面上下看</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.CheckAngle(System.Single)">
+            <summary>检测角度</summary>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.ForwardMove(UnityEngine.Rigidbody,UnityEngine.Transform,System.Single)">
+            <summary>
+            通过初速度让角色自己前方移动（逐帧调用）
+            </summary>
+            <param name="trans">要移动的物体</param>
+            <param name="moveSpeed">移动速度</param>
+        </member>
+        <member name="M:MyTool.Tools.RigidBodyTool.FreeJump(UnityEngine.Rigidbody,UnityEngine.Transform,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            根据键盘按键和轮盘方向跳跃（一次性调用）
+            </summary>
+            <param name="trans">目标物体</param>
+            <param name="jumpSpeed">跳跃初速度</param>
+            <param name="forwardSpeed">向前初速度</param>
+            <param name="h">X轴方向</param>
+            <param name="v">y轴方向</param>
         </member>
         <member name="M:MyTool.Tools.Vibration.Vibrate">
             <summary>
@@ -542,16 +591,6 @@
             <typeparam name="T"></typeparam>
             <param name="t"></param>
         </member>
-        <member name="T:MyTool.Tools.ShortcutsCellback">
-            <summary>
-            快捷操作指令
-            </summary>
-        </member>
-        <member name="T:MyTool.Tools.ShortcutsCellbackFloat">
-            <summary>
-            快捷指令float
-            </summary>
-        </member>
         <member name="M:MyTool.UnityComponents.Database`1.HasKey(System.String)">
             <summary>检查是否包含Key</summary>
         </member>
@@ -667,6 +706,16 @@
             字段名称
             </summary>
             <param name="name">名称</param>
+        </member>
+        <member name="T:ShortcutsCellback">
+            <summary>
+            快捷操作指令
+            </summary>
+        </member>
+        <member name="T:ShortcutsCellbackFloat">
+            <summary>
+            快捷指令float
+            </summary>
         </member>
         <member name="M:ZUI.ZUIWindowBase.Close">
             <summary>关闭当前页面</summary>
