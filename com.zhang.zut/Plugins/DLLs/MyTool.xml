@@ -599,19 +599,8 @@
         <member name="M:MyTool.UnityComponents.Database`1.HasKey(System.String)">
             <summary>检查是否包含Key</summary>
         </member>
-        <member name="M:MyTool.UnityComponents.SpriteDatas.Get(System.String)">
-            <summary>
-            获取对象
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MyTool.UnityComponents.PrefabDatas.Get(System.String)">
-            <summary>
-            获取对象
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
+        <member name="M:MyTool.UnityComponents.Database`1.Get(System.String)">
+            <summary>获取对象</summary>
         </member>
         <member name="M:MyTool.UnityComponents.UI_Click.ResetScale">
             <summary>
