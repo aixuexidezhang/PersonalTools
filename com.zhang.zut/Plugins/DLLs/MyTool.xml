@@ -265,6 +265,9 @@
             复制Component
             </summary>
         </member>
+        <member name="M:MyTool.Tools.MyTool.GetCollectionElementType``1(``0)">
+            <summary>获取Collection的元素类型</summary>
+        </member>
         <member name="M:MyTool.Tools.RigidBodyTool.IsRelativeMove(UnityEngine.Rigidbody)">
             <summary>是否移动?检测velocity</summary>
         </member>
