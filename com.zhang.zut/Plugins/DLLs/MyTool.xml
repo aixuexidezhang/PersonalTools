@@ -605,34 +605,50 @@
         <member name="M:MyTool.UnityComponents.Database`1.Get(System.String)">
             <summary>获取对象</summary>
         </member>
-        <member name="M:MyTool.UnityComponents.UI_Click.ResetScale">
-            <summary>
-            重置比例
-            </summary>
+        <member name="T:MyTool.UnityComponents.UI_Click.UI_OnClick">
+            <summary>快捷操作方法</summary>
         </member>
-        <member name="M:MyTool.UnityComponents.UI_Click.SetInteractable(System.Boolean,System.Boolean)">
-            <summary>
-            设置是否禁用
-            </summary>
-            <param name="interactable"></param>
+        <member name="F:MyTool.UnityComponents.UI_Click.UI_OnClick.OnClick">
+            <summary>点击完成</summary>
         </member>
-        <member name="M:MyTool.UnityComponents.IUIClickable.SetOnClick(System.Action)">
-            <summary>
-            设置点击事件
-            </summary>
-            <param name="callback"></param>
+        <member name="F:MyTool.UnityComponents.UI_Click.UI_OnClick.OnClickUp">
+            <summary>抬起</summary>
         </member>
-        <member name="M:MyTool.UnityComponents.IUIClickable.SetOnDown(System.Action)">
-            <summary>
-            设置按下事件
-            </summary>
-            <param name="callback"></param>
+        <member name="F:MyTool.UnityComponents.UI_Click.UI_OnClick.OnClickDown">
+            <summary>按下</summary>
         </member>
-        <member name="M:MyTool.UnityComponents.IUIClickable.SetOnUp(System.Action)">
-            <summary>
-            设置抬起事件
-            </summary>
-            <param name="callback"></param>
+        <member name="F:MyTool.UnityComponents.UI_Click.Shortcuts">
+            <summary>快捷操作方法</summary>
+        </member>
+        <member name="P:MyTool.UnityComponents.UI_Click.PointerEventData">
+            <summary>当前操作数据</summary>
+        </member>
+        <member name="F:MyTool.UnityComponents.UI_Click.OnClick">
+            <summary>点击完成</summary>
+        </member>
+        <member name="F:MyTool.UnityComponents.UI_Click.OnClickUp">
+            <summary>抬起</summary>
+        </member>
+        <member name="F:MyTool.UnityComponents.UI_Click.OnClickDown">
+            <summary>按下</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.OnPointerClick(UnityEngine.EventSystems.PointerEventData)">
+            <summary>点击完成</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.OnPointerDown(UnityEngine.EventSystems.PointerEventData)">
+            <summary>按下</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.OnPointerUp(UnityEngine.EventSystems.PointerEventData)">
+            <summary>抬起</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.SetOnClick(System.Action)">
+            <summary>设置点击事件</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.SetOnDown(System.Action)">
+            <summary>设置按下事件</summary>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Click.SetOnUp(System.Action)">
+            <summary>设置抬起事件</summary>
         </member>
         <member name="T:MyTool.UnityComponents.UI_Drag">
             <summary>
@@ -656,6 +672,9 @@
             拖拽完毕
             </summary>
             <param name="eventData"></param>
+        </member>
+        <member name="M:MyTool.UnityComponents.UI_Selectable.SetInteractable(System.Boolean,System.Boolean)">
+            <summary>设置是否禁用</summary>
         </member>
         <member name="M:ConditionalHideAttribute.#ctor(System.String)">
             <summary>
