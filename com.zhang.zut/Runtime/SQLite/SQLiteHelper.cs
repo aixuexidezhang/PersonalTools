@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 using System.IO;
-using System.Data.SQLite;
 using UnityEngine;
+using System.Data;
 using System.Reflection;
+using SQLite4Unity3d;
 
 public static class SQLiteHelper
 {
@@ -20,29 +21,13 @@ public static class SQLiteHelper
     /// <param name="sql">SQL语句</param>
     /// <param name="pms">SQL参数，因为不知道会有多少个参数，所以用可变参数params</param>
     /// <returns>受影响的行数</returns>
-    public static int ExecuteNonQuery(string sql, params SQLiteParameter[] pms)
+    public static int ExecuteNonQuery(string sql, params object[] args)
     {
         using (SQLiteConnection conn = new SQLiteConnection(conStr))
         {
-            using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-            {
-                if (pms != null)
-                {
-                    cmd.Parameters.AddRange(pms);
-                }
-                try
-                {
-                    conn.Open();
-                }
-                catch
-                {
-                    throw;
-                }
-
-                return cmd.ExecuteNonQuery();
-            }
+            return conn.Execute(sql, args);
         }
-        
+
     }
 
     /// <summary>
@@ -51,59 +36,16 @@ public static class SQLiteHelper
     /// <param name="sql">查询的SQL语句</param>
     /// <param name="pms">SQL参数</param>
     /// <returns>返回查询对象，查询结果第一行第一列</returns>
-    public static T ExecuteScalar<T>(string sql, params SQLiteParameter[] pms)
+    public static T ExecuteScalar<T>(string sql, params object[] args)
     {
 
         using (SQLiteConnection conn = new SQLiteConnection(conStr))
         {
-            using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-            {
-                if (pms != null)
-                {
-                    cmd.Parameters.AddRange(pms);
-                }
-                try
-                {
-                    conn.Open();
-                }
-                catch
-                {
-                    throw;
-                }
-                return (T)cmd.ExecuteScalar();
-            }
+            return conn.ExecuteScalar<T>(sql, args);
         }
 
     }
-    /// <summary>
-    /// 查询单个结果，一般和聚合函数 一起使用
-    /// </summary>
-    /// <param name="sql">查询的SQL语句</param>
-    /// <param name="pms">SQL参数</param>
-    /// <returns>返回查询对象，查询结果第一行第一列</returns>
-    public static object ExecuteScalar(string sql, params SQLiteParameter[] pms)
-    {
-        using (SQLiteConnection conn = new SQLiteConnection(conStr))
-        {
-            using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-            {
-                if (pms != null)
-                {
-                    cmd.Parameters.AddRange(pms);
-                }
-                try
-                {
-                    conn.Open();
-                }
-                catch
-                {
-                    throw;
-                }
-                return cmd.ExecuteScalar();
-            }
-        }
-
-    }
+ 
 
 
 
@@ -113,30 +55,12 @@ public static class SQLiteHelper
     /// <param name="sql">SQL语句</param>
     /// <param name="pms">SQL参数</param>
     /// <returns>返回SqlDataReader对象</returns>
-    public static SQLiteDataReader ExcuteReader(string sql, params SQLiteParameter[] pms)
+    public static List<T> ExcuteReader<T>(string sql, params object[] args) where T : new()
     {
         //这里不能用using，不然在返回SqlDataReader时候会报错，因为返回时候已经在using中关闭了。
         //事实上，在使用数据库相关类中，SqlConnection是必须关闭的，但是其他可以选择关闭，因为CG回自动回收
         SQLiteConnection conn = new SQLiteConnection(conStr);
-        using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-        {
-            if (pms != null)
-            {
-                cmd.Parameters.AddRange(pms);
-            }
-            try
-            {
-                conn.Open();
-                //传入System.Data.CommandBehavior.CloseConnection枚举是为了让在外面使用完毕SqlDataReader后，只要关闭了SqlDataReader就会关闭对应的SqlConnection
-                return cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            }
-            catch
-            {
-                conn.Close();
-                conn.Dispose();
-                throw;
-            }
-        }
+        return conn.Query<T>(sql, args);
     }
 
 
@@ -149,7 +73,8 @@ public static class SQLiteHelper
     {
         try
         {
-            SQLiteConnection.CreateFile(dbPath);
+            var ds = new DataService(dbPath);
+            ds.CreateDB();
             return true;
         }
         catch (Exception ex)
