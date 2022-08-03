@@ -733,6 +733,9 @@
             快捷指令float
             </summary>
         </member>
+        <member name="M:ZUI.ZUIWindowBase.Close(System.Action)">
+            <summary>关闭当前页面</summary>
+        </member>
         <member name="M:ZUI.ZUIWindowBase.Close">
             <summary>关闭当前页面</summary>
         </member>
@@ -783,12 +786,12 @@
         </member>
         <member name="M:ZUIMgr.Close(ZUI.ZUIRoot,System.Action)">
             <summary>
-            关闭最顶上的UI
+            关闭UI
             </summary>
         </member>
         <member name="M:ZUIMgr.Close(System.String,System.Action)">
             <summary>
-            关闭最顶上的UI
+            关闭UI
             </summary>
         </member>
     </members>
