@@ -760,6 +760,11 @@
             初始化UI框架
             </summary>
         </member>
+        <member name="M:ZUIMgr.Open``2(``1,System.String,ZUIMgr.UIEffect,System.Action)">
+            <summary>
+            打开一个有参UI窗口
+            </summary>
+        </member>
         <member name="M:ZUIMgr.Open``1(System.String,``0,ZUIMgr.UIEffect,System.Action)">
             <summary>
             打开一个有参UI窗口
