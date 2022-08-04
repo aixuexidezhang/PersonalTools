@@ -739,6 +739,29 @@
         <member name="M:ZUI.ZUIWindowBase.Close">
             <summary>关闭当前页面</summary>
         </member>
+        <member name="T:ZUI.ZUIRoot">
+            <summary>
+            当前的Canvas
+            </summary>
+        </member>
+        <member name="F:ZUI.ZUIRoot.RootCanvas">
+            <summary>画布组件</summary>
+        </member>
+        <member name="F:ZUI.ZUIRoot.RootCanvasGroup">
+            <summary>画布组件</summary>
+        </member>
+        <member name="F:ZUI.ZUIRoot.RootCanvasScaler">
+            <summary>画布组件</summary>
+        </member>
+        <member name="F:ZUI.ZUIRoot.RootGraphicRaycaster">
+            <summary>画布组件</summary>
+        </member>
+        <member name="F:ZUI.ZUIRoot.Child">
+            <summary>当前窗口</summary>
+        </member>
+        <member name="P:ZUI.ZUIRoot.Mask">
+            <summary>遮罩</summary>
+        </member>
         <member name="T:ZUIMgr.UIEffect">
             <summary>
             UI打开和关闭的动效
