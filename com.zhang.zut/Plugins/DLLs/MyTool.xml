@@ -739,6 +739,12 @@
         <member name="M:ZUI.ZUIWindowBase.Close">
             <summary>关闭当前页面</summary>
         </member>
+        <member name="M:ZUI.ZUIWindowBase.Close(System.Boolean)">
+            <summary>
+            关闭页面
+            </summary>
+            <param name="closeTop">true为关闭最顶上页面,false为关闭当前</param>
+        </member>
         <member name="T:ZUI.ZUIRoot">
             <summary>
             当前的Canvas
@@ -784,11 +790,6 @@
         <member name="M:ZUIMgr.Init(MyTool.UnityComponents.PrefabDatas)">
             <summary>
             初始化UI框架
-            </summary>
-        </member>
-        <member name="M:ZUIMgr.Open``2(``1,ZUIMgr.UIEffect,System.Action)">
-            <summary>
-            打开一个有参UI窗口
             </summary>
         </member>
         <member name="M:ZUIMgr.Open``1(System.String,``0,ZUIMgr.UIEffect,System.Action)">
