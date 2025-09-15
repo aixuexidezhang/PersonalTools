@@ -1,0 +1,1 @@
+{"changeLogFilePath":"/CHANGELOG.md","versionFilePath":"/VERSION","packageJsonFilePath":"/package.json"}
